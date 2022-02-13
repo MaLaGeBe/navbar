@@ -1,12 +1,13 @@
 <?php
 /*
 Plugin Name: 导航菜单增强
-Version: v1.0
-Plugin URL: 
+Version: v1.0.1
+Plugin URL: https://www.emlog.net/plugin/detail/438
 Description: emlog导航菜单增强插件，功能更强
 Author: MaLaGeBe
 Author Email:
-Author URL: 
+Author URL: https://www.emlog.net/plugin/detail/438
+ForEmlog: pro 1.2.0
 */
 !defined('EMLOG_ROOT') && exit('access deined!');
 
@@ -75,7 +76,6 @@ if ($_SERVER['PHP_SELF'] == '/admin/navbar.php' && !empty($_em_registered_nav_me
         require_once('views/nav.php');
         require_once EMLOG_ROOT . '/admin/views/footer.php';
         View::output();
-        exit;
     }
 
     if ($action == 'locations') {
@@ -87,7 +87,6 @@ if ($_SERVER['PHP_SELF'] == '/admin/navbar.php' && !empty($_em_registered_nav_me
         require_once('views/locations.php');
         require_once EMLOG_ROOT . '/admin/views/footer.php';
         View::output();
-        exit;
     }
 
     if ($action == 'update') {
@@ -195,8 +194,6 @@ if ($_SERVER['PHP_SELF'] == '/admin/navbar.php' && !empty($_em_registered_nav_me
 
             emDirect('navbar.php?action=locations&success=1');
         }
-
-        exit;
     }
 
     if ($action == 'add_menu') {
@@ -371,11 +368,10 @@ function getMenu($menu = 0)
 function getMenuByLoc($location)
 {
     $menus = NavCache::getInstance()->readCache('navis');
-    $locations = $menus['locations'][$location];
 
     $navis = [];
-    if (isset($locations)) {
-        $navis = $menus['navis'][$locations];
+    if (isset($menus['locations'][$location])) {
+        $navis = $menus['navis'][$menus['locations'][$location]];
     }
 
     return $navis;
