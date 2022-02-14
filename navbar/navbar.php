@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: 导航菜单增强
-Version: v1.0.1
+Version: v1.0
 Plugin URL: https://www.emlog.net/plugin/detail/438
 Description: emlog导航菜单增强插件，功能更强
 Author: MaLaGeBe
@@ -216,7 +216,7 @@ if ($_SERVER['PHP_SELF'] == '/admin/navbar.php' && !empty($_em_registered_nav_me
                         if ($id == 0) {
                             $navis[$_POST['menu']][] = array(
                                 'naviname' => $title,
-                                'url' => '/',
+                                'url' => BLOG_URL,
                                 'pid' => 0,
                                 'isdefault' => 1,
                                 'newtab' => 'n',

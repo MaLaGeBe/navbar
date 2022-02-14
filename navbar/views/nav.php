@@ -196,13 +196,14 @@
                                     if ($value['pid'] !== 0) {
                                         $depth = 1;
                                     }
+
                                     $value['type_name'] = '';
                                     switch ($value['type']) {
                                         case Navi_Model::navitype_home:
                                         case Navi_Model::navitype_t:
                                         case Navi_Model::navitype_admin:
                                             $value['type_name'] = '系统';
-                                            $value['url'] = '/' . $value['url'];
+                                            $value['url'] = $value['url'];
                                             break;
                                         case Navi_Model::navitype_sort:
                                             $value['type_name'] = '<span class="text-primary">分类</span>';
